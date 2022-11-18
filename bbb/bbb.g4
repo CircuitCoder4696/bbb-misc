@@ -52,8 +52,7 @@ type_ :
 'struct' | 'enum' | 'union'
 */
 aggregate_type :
-	(Char_s Char_t Char_r Char_u Char_c Char_t) | (Char_e Char_n Char_u Char_m) | (Char_u Char_n Char_i Char_o Char_n)
-;
+	'struct' | 'enum' | 'union';
 
 range_ :
 	(open_bracket | open_paren) whitespace*
@@ -66,48 +65,36 @@ range_ :
 0 | [1-9][0-9]*
 */
 canon_natural_num :
-	Char_0
-	| (Char_1 | Char_2 | Char_3 | Char_4 | Char_5 | Char_6 | Char_7 | Char_8 | Char_9)
-		(Char_0 | Char_1 | Char_2 | Char_3 | Char_4 | Char_5 | Char_6 | Char_7 | Char_8 | Char_9)*
-;
+	'0' | '[1-9]' '[0-9]'* ;
 
 /*
 'u1' | 'u8' | 'u16' | 'u32' | 'u64'
 	| 'i8' | 'i16' | 'i32' | 'i64'
 */
 base_type :
-	(Char_u Char_1) | (Char_u Char_8) | (Char_u Char_1 Char_6) | (Char_u Char_3 Char_2) | (Char_u Char_6 Char_4) | (Char_i Char_8) | (Char_i Char_1 Char_6) | (Char_i Char_3 Char_2) | (Char_i Char_6 Char_4)
-;
+    'u1' | 'u8' | 'u16' | 'u32' | 'u64' | 'i8' | 'i16' | 'i32' | 'i64' ;
 
 //building block rules
 
 /*
 [0-9]
 */
-decimal_digit :
-	Char_0 | Char_1 | Char_2 | Char_3 | Char_4 | Char_5 | Char_6 | Char_7 | Char_8 | Char_9
-;
+decimal_digit : '[0-9]' ;
 
 /*
 [0-9a-f]
 */
-hex_digit :
-	Char_0 | Char_1 | Char_2 | Char_3 | Char_4 | Char_5 | Char_6 | Char_7 | Char_8 | Char_9 | Char_a | Char_b | Char_c | Char_d | Char_e | Char_f
-;
+hex_digit : '[0-9a-f]' ;
 
 /*
 [a-z]
 */
-lower_alpha :
-	Char_a | Char_b | Char_c | Char_d | Char_e | Char_f | Char_g | Char_h | Char_i | Char_j | Char_k | Char_l | Char_m | Char_n | Char_o | Char_p | Char_q | Char_r | Char_s | Char_t | Char_u | Char_v | Char_w | Char_x | Char_y | Char_z
-;
+lower_alpha : '[a-z]';
 
 /*
 [A-Z]
 */
-upper_alpha :
-	Char_A | Char_B | Char_C | Char_D | Char_E | Char_F | Char_G | Char_H | Char_I | Char_J | Char_K | Char_L | Char_M | Char_N | Char_O | Char_P | Char_Q | Char_R | Char_S | Char_T | Char_U | Char_V | Char_W | Char_X | Char_Y | Char_Z
-;
+upper_alpha : '[A-Z]';
 
 //simplest tokens
 
